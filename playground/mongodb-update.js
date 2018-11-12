@@ -8,17 +8,34 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true
   console.log('Connected to Mongodb server');
   const db = client.db('TodoApp');
 
-  db.collection('Todos').findOneAndUpdate({
-  _id: new ObjectID('5be8669c779f7c0cfdece17c')
-}, {
-  $set: {
-    completed: true
-  }
-}, {
-  returnOriginal: false
-}).then((result) => {
-  console.log(result);
-});
+  // db.collection('Todos').findOneAndUpdate({
+  // _id: new ObjectID('5be8669c779f7c0cfdece17c')
+  // }, {
+  //   $set: {
+  //     completed: true
+  //   }
+  // }, {
+  //   returnOriginal: false
+  // }).then((result) => {
+  //   console.log(result);
+  // });
+
+  db.collection('Users').findOneAndUpdate({
+    _id: new ObjectID('5be94dc0abd4fa7170b9ee8c')
+  }, {
+    $set: {
+      name: "Jenny"
+    },
+    $inc: {
+      age: 1
+    }
+  }, {
+    returnOriginal: false
+  }).then((result) => {
+    console.log(result);
+  });
+
+
 
   //client.close(); //closed the connecting with the Mongodb server
 });
